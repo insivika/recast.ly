@@ -11,20 +11,8 @@ class App extends React.Component {
     };
   }
 
-  changeCurrentVideo(e) {
-    var newVideo;
-    var assignCurrentVideo = function() {
-      window.exampleVideoData.forEach((video) => {
-        if(video.id.videoId === e.target.id) {
-          newVideo = video;
-        }
-      });
-    }
-
-    assignCurrentVideo();
-    this.setState({
-      currentVideo: newVideo
-    })
+  changeCurrentVideo(selectedVideo) {
+    this.setState({currentVideo: selectedVideo})
   }
 
   render() {
