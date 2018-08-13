@@ -4,15 +4,27 @@ class App extends React.Component {
 
     this.changeCurrentVideo = this.changeCurrentVideo.bind(this);
 
-    this.state ={
+    this.state = {
       videos: window.exampleVideoData,
       currentVideo: window.exampleVideoData[0]
 
-    }
+    };
   }
 
-  changeCurrentVideo(){
-    console.log('poop');
+  changeCurrentVideo(e) {
+    var newVideo;
+    var assignCurrentVideo = function() {
+      window.exampleVideoData.forEach((video) => {
+        if(video.id.videoId === e.target.id) {
+          newVideo = video;
+        }
+      });
+    }
+
+    assignCurrentVideo();
+    this.setState({
+      currentVideo: newVideo
+    })
   }
 
   render() {
@@ -32,7 +44,7 @@ class App extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
