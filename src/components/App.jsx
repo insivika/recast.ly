@@ -4,10 +4,12 @@ class App extends React.Component {
     super(props);
 
     this.changeCurrentVideo = this.changeCurrentVideo.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
 
     this.state = {
       videos: window.exampleVideoData,
-      currentVideo: window.exampleVideoData[0]
+      currentVideo: window.exampleVideoData[0],
+      currentSearch: ''
     };
   }
   componentDidMount() {
@@ -18,7 +20,10 @@ class App extends React.Component {
   //this.props.searchYouTube({max: 5, query: 'cats', key: window.YOUTUBE_API_KEY}, (data) =>{ return data; })
   changeCurrentVideo(selectedVideo) {
     this.setState({currentVideo: selectedVideo});
+  }
 
+  onSearchChange(input) {
+    console.log(input);
   }
 
   render() {
@@ -27,7 +32,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search currentSearch={this.state.currentSearch} onSearchChange={this.onSearchChange}/>
           </div>
         </nav>
         <div className="row">
