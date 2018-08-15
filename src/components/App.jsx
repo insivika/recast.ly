@@ -6,17 +6,23 @@ class App extends React.Component {
     this.changeCurrentVideo = this.changeCurrentVideo.bind(this);
 
     this.state = {
-      videos: props.searchYouTube({max: 5, query: 'cats', key: YOUTUBE_API_KEY}, function(data) { return data; }),
+      videos: window.exampleVideoData,
       currentVideo: window.exampleVideoData[0]
-
     };
   }
+  componentDidMount() {
+    this.props.searchYouTube({max: 5, query: 'cats', key: window.YOUTUBE_API_KEY}, (videoList) => { this.setState({videos: videoList}); });
 
+  }
+
+  //this.props.searchYouTube({max: 5, query: 'cats', key: window.YOUTUBE_API_KEY}, (data) =>{ return data; })
   changeCurrentVideo(selectedVideo) {
     this.setState({currentVideo: selectedVideo});
+
   }
 
   render() {
+
     return (
       <div>
         <nav className="navbar">
@@ -33,7 +39,9 @@ class App extends React.Component {
           </div>
         </div>
       </div>
+
     );
+
   }
 }
 

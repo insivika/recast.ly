@@ -14,7 +14,7 @@ var searchYouTube = (options, callback) => {
     success: function(data) {
       callback(data.items);
     },
-    error: function(data) {
+    error: function() {
       console.log('Failed to get videos');
     }
   });
