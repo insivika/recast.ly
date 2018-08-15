@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   changeCurrentVideo(selectedVideo) {
-    this.setState({currentVideo: selectedVideo})
+    this.setState({currentVideo: selectedVideo});
   }
 
   render() {
