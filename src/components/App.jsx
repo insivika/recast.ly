@@ -13,7 +13,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    this.props.searchYouTube({max: 5, query: 'cats', key: window.YOUTUBE_API_KEY}, (videoList) => { this.setState({videos: videoList}); });
+    this.props.searchYouTube({max: 5, query: this.state.currentSearch, key: window.YOUTUBE_API_KEY}, (videoList) => { this.setState({videos: videoList}); });
 
   }
 
@@ -23,7 +23,8 @@ class App extends React.Component {
   }
 
   onSearchChange(input) {
-    console.log(input);
+    this.setState({currentSearch: input});
+    this.props.searchYouTube({max: 5, query: this.state.currentSearch, key: window.YOUTUBE_API_KEY}, (videoList) => { this.setState({videos: videoList}); });
   }
 
   render() {

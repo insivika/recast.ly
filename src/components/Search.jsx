@@ -1,8 +1,10 @@
+
+
 var Search = (props) => {
-  console.log(props);
+
   return (
     <div className="search-bar form-inline">
-      <input className="form-control" type="text" value={props.currentSearch} onChange={() => props.onSearchChange('poop')}/>
+      <input className="form-control" type="text" value={props.currentSearch} onChange={(e) => props.onSearchChange(e.target.value)}/>
       <button className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
       </button>
