@@ -6,7 +6,7 @@ class App extends React.Component {
     this.changeCurrentVideo = this.changeCurrentVideo.bind(this);
 
     this.state = {
-      videos: window.exampleVideoData,
+      videos: props.searchYouTube({max: 5, query: 'cats', key: YOUTUBE_API_KEY}, function(data) { return data; }),
       currentVideo: window.exampleVideoData[0]
 
     };
