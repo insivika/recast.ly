@@ -11,6 +11,7 @@ class App extends React.Component {
       currentVideo: window.exampleVideoData[0],
       currentSearch: ''
     };
+    this.searchYouTubeDebounced = _.debounce(this.props.searchYouTube, 500);
   }
   componentDidMount() {
     this.props.searchYouTube({max: 5, query: this.state.currentSearch, key: window.YOUTUBE_API_KEY}, (videoList) => { this.setState({videos: videoList}); });
@@ -24,7 +25,7 @@ class App extends React.Component {
 
   onSearchChange(input) {
     this.setState({currentSearch: input});
-    this.props.searchYouTube({max: 5, query: this.state.currentSearch, key: window.YOUTUBE_API_KEY}, (videoList) => { this.setState({videos: videoList}); });
+    this.searchYouTubeDebounced({max: 5, query: this.state.currentSearch, key: window.YOUTUBE_API_KEY}, (videoList) => { this.setState({videos: videoList}); });
   }
 
   render() {
